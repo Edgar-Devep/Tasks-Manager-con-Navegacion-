@@ -1,8 +1,10 @@
 function TodoCounter({ total, completed }) {
   return (
-  <h1>
-    Has completado {completed} de {total} TODOS
-  </h1>
+    <div className="contenedor-h1">
+      <h1>
+        Has completado {completed} de {total} TODOS
+      </h1>
+    </div>
   );
 };
 

@@ -11,7 +11,7 @@
 
 .contenedor-input::placeholder {
   color: #5d733d;
-  font-weight: 400;
+  font-weight: 900;
   font-family: var(--fuente-content);
 }
 
