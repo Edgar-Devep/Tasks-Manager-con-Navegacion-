@@ -7,21 +7,30 @@ import { CreateTodobutton } from './Components/CreateTodobutton';
 
 function App() {
 
+  const todoDefault = [
+    { text: 'Cortar Cebolla', completed: true },
+    { text: 'Terminar Curso', completed: false },
+    { text: 'Ver Peliculas', completed: true },
+    { text: 'Cambiar Aceite', completed: false },
+];
+
   return (
-    <>
-      <div className='App'>
-        <TodoCounter />
-        <TodoSearch />
+    <div className='Contenedor-componentes'>      
+      <TodoCounter completed={16} total={20}/>
+      <TodoSearch />
 
-        <Todolist>
-          <TodoItem />
-          <TodoItem />
-          <TodoItem />
-        </Todolist>
+      <Todolist>
+        {todoDefault.map(todo => (
+          <TodoItem 
+          key={todo.text} 
+          text={todo.text}
+          completed={todo.completed}
+          />
+        ))}
+      </Todolist>
 
-        <CreateTodobutton />
-      </div>
-    </>
+      <CreateTodobutton />      
+    </div>
   );
 }
 

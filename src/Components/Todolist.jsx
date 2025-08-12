@@ -1,7 +1,9 @@
-function Todolist(props) {
+import './Styles/Todo-ul-li.css'
+
+function Todolist({ children }) {
   return (
-    <ul>
-      {props.children}
+    <ul className="contenedor-ul">
+      {children}
     </ul>
   );
 };
