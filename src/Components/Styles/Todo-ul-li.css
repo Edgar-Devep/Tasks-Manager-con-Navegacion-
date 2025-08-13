@@ -23,7 +23,7 @@
   display: flex;
   flex-grow: 1; /* - se expande para ocupar todo el espacio que queda libre entre los otros elementos*/
   font-family: var(--fuente-content);
-  font-weight: 900;
+  font-weight: 500;
   overflow: hidden;         /* Oculta cualquier contenido que se salga del contenedor */
   text-overflow: ellipsis;  /* Si el texto se desborda, muestra "..." al final */
   white-space: nowrap;      /* Evita que el texto se divida en varias líneas */
@@ -35,6 +35,15 @@
 
 .fa-x:hover{
   color:  #ff0000;
+}
+
+.text-check--active {
+  text-decoration: line-through;
+  color: #09ff00;
+}
+
+.icon.check--active {
+  color: #09ff00;
 }
 
 .fa-check:hover {

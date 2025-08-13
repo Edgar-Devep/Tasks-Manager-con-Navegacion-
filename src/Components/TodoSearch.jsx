@@ -1,13 +1,10 @@
-import { useState } from 'react';
 import './Styles/TodoSearch.css'
 
-function TodoSearch() {
-  const [stateSearch, setStateSearch] = useState('')
+function TodoSearch({ stateSearch, setStateSearch}) {
 
-  console.log('Escribiste', stateSearch);
-  
   return (
   <input 
+  title='Nueva Tarea'
   type='search'
   value={stateSearch}
   className='contenedor-input'

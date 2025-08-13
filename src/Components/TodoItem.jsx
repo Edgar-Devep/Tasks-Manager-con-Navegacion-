@@ -1,11 +1,18 @@
 import './Styles/Todo-ul-li.css'
 
-function TodoItem({ text, completed }) {
+function TodoItem({ text, completed, onComplete, onDelete }) {
   return (
   <li className="contenedor-li">
-    <span><i class="fa-solid fa-check"></i></span>
-    <p className='contenedor-p'>{text}</p>
-    <span><i class="fa-solid fa-x"></i></span>
+    <span 
+    title='Tarea Lista'
+    className={`${completed && 'icon.check--active'}`}
+    onClick={onComplete}
+    ><i className={`fa-solid fa-check ${completed && 'text-check--active'}`}></i></span>
+    <p className={`contenedor-p ${completed && 'text-check--active'}`}>{text}</p>
+    <span
+    title='Eliminar Tarea'
+    onClick={onDelete}
+    ><i className="fa-solid fa-x"></i></span>
   </li>
 )
 };
