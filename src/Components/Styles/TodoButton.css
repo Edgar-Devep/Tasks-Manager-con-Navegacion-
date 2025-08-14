@@ -14,7 +14,11 @@
   cursor: pointer;
   box-shadow: 2px 1px 10px 8px #dfe0a5;
   color: #dfe0a5;
+  position: absolute;
+  bottom: 38px;
+  right: 72px;
 }
+
 .contenedor-button:hover {
   transition: 0.5s ease;
   transform: rotate(224deg);

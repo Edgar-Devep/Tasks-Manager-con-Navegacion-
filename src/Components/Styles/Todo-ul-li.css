@@ -17,6 +17,7 @@
   border: 2px solid #dfe0a5;
   border-radius: 8px;
   padding: 0 8px;  
+ /* flex: 1 1; practicarlo Ideal cuando querés que varios elementos dentro de un contenedor flex se repartan el espacio disponible de forma proporcional */
 }
 
 .contenedor-p {
@@ -27,6 +28,7 @@
   overflow: hidden;         /* Oculta cualquier contenido que se salga del contenedor */
   text-overflow: ellipsis;  /* Si el texto se desborda, muestra "..." al final */
   white-space: nowrap;      /* Evita que el texto se divida en varias líneas */
+  user-select: none; /*  impide que el usuario seleccione texto o elementos con el cursor */
 }
 
 .fa-x, .fa-check {
