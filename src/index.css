@@ -25,7 +25,7 @@ h1 {
   margin: 12px;
   overflow: hidden;         /* Oculta cualquier contenido que se salga del contenedor */
   text-overflow: ellipsis;  /* Si el texto se desborda, muestra "..." al final */
-
+  user-select: none;
 }
 
 .contenedor-h1 {

@@ -17,7 +17,13 @@
   border: 2px solid #dfe0a5;
   border-radius: 8px;
   padding: 0 8px;  
+  background-color: #090a098d;
+  color: #fff;
  /* flex: 1 1; practicarlo Ideal cuando querés que varios elementos dentro de un contenedor flex se repartan el espacio disponible de forma proporcional */
+}
+
+.contenedor-li--click {
+  background-color: #00790052;
 }
 
 .contenedor-p {

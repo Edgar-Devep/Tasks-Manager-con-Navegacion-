@@ -7,8 +7,8 @@ function TodoCounter({ total, completed }) {
         {sintareas 
         ? '📝 No tienes tareas pendientes. ¡Agrega una para comenzar!'
         : completarTodo 
-          ? 'Felicidades Terminaste Todas Tus Tareas 😁' 
-          :`Has completado ${completed} de ${total} Tareas `}
+          ? 'Felicidades Terminaste Todas Tus Tareas 🥳' 
+          :`Tareas Completadas ${completed} de ${total} 😁 `}
       </h1>
     </div>
   );
