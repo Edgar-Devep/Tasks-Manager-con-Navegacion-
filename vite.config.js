@@ -4,8 +4,7 @@ import react from '@vitejs/plugin-react-swc'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-    base: '/Tasks-Manager/', // 👈 nombre exacto del repositorio en GitHub
-   server: {
+    server: {
     hhost: '0.0.0.0',   // Permite que el navegador de Windows acceda al servidor en WSL
     port: 5173,        // Puerto por defecto (podés cambiarlo si querés)
     open: true,         // Abre el navegador automáticamente al correr `npm run dev`

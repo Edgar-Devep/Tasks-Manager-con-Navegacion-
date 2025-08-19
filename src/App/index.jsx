@@ -1,7 +1,7 @@
 import '../App.css'
+import { useState } from 'react';
 import { AppUi } from './App-UI';
 import { useLocalStorageItem } from './Custom-Hooks-useLocalStorange';
-import { useState } from 'react';
 
 // const todoDefault = [
 //   { text: 'Cortar Cebolla', completed: true },
@@ -10,11 +10,16 @@ import { useState } from 'react';
 //   { text: 'Cambiar Aceite', completed: false },
 // ];
 
-//  localStorage.setItem('TAREAS_V1', JSON.stringify(todoDefault));
+//  localStorage.saveItem('TAREAS_V1', JSON.stringify(todoDefault));
 
 function App() {
-
-  const [todos, saveItem] = useLocalStorageItem('TAREAS_V1', []); // usamos useState para declarar el estado de los todos, inicializándolo con los todos parseados desde localStorage
+  
+  const {
+    item: todos,
+    saveItem,
+    loading,
+    error  
+  } = useLocalStorageItem('TAREAS_V1', []); // usamos useState para declarar el estado de los todos, inicializándolo con los todos parseados desde localStorage
   const [stateSearch, setStateSearch] = useState(''); // podemos declarar estados en el padre para que los hijos puedan acceder a ellos
 
   const completedTodos = todos.filter(todo => !! todo.completed).length // !! convierte el valor a booleano en caso de que sea un string o un number
@@ -25,7 +30,7 @@ function App() {
     const searchText = stateSearch.toLowerCase()// convertimos el texto de búsqueda a minúsculas
     return todoText.includes(searchText)// verificamos si el texto del todo esta incluido en el texto de búsqueda
 
-  });  
+  });
 
    const completeTodo = (text) => { // se le pasa el texto del todo que se quiere completar o descompletar
     const newItem = [...todos]; // se crea una copia del estado actual de los todos
@@ -39,7 +44,7 @@ function App() {
   const deleteTodo = (text) => {
     const newItem = [...todos];
     const todoIndex = newItem.findIndex(
-      (todo) => todo.text == text
+      (todo) => todo.text === text
     );
     newItem.splice(todoIndex, 1); // eliminamos el todo encontrado en el índice especificado
     saveItem(newItem);
@@ -47,6 +52,8 @@ function App() {
 
   return (
     <AppUi  // aquí se pasa el estado y las funciones a los componentes hijos
+    loading = {loading}
+    error = {error}
     completedTodos = {completedTodos} 
     totalTodo = {totalTodo} //estos son los estados que se pasan a los componentes hijos
     stateSearch = {stateSearch}
