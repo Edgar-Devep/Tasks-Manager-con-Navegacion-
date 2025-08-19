@@ -1,0 +1,17 @@
+import './TodoButton.css'
+
+function CreateTodobutton() {
+  return (
+    <div className='general-button'>
+      <button 
+      title='Agregar Tarea'
+      className="contenedor-button"
+      onClick={() => console.log('Me estas llamando?')}
+      >
+        <i className="fa-solid fa-plus"></i>
+      </button>
+    </div>
+  );
+};
+
+export { CreateTodobutton }

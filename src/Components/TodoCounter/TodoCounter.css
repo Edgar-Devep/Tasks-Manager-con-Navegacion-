@@ -1,0 +1,8 @@
+h1 {
+  font-family: var(--fuente-title);
+  font-size: 2.1rem;
+  margin: 12px;
+  overflow: hidden;         /* Oculta cualquier contenido que se salga del contenedor */
+  text-overflow: ellipsis;  /* Si el texto se desborda, muestra "..." al final */
+  user-select: none;
+}

@@ -1,0 +1,27 @@
+.general-button {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.contenedor-button {
+  margin: 20px;
+  background: transparent;
+  border: none;
+  border-radius: 100%;
+  font-size: 2rem;
+  transition: 0.5s ease;
+  cursor: pointer;
+  box-shadow: 2px 1px 10px 8px #dfe0a5;
+  color: #dfe0a5;
+  position: absolute;
+  bottom: 38px;
+  right: 72px;
+}
+
+.contenedor-button:hover {
+  transition: 0.5s ease;
+  transform: rotate(224deg);
+  box-shadow: 2px 1px 10px 8px #5d733d;
+  color: #5d733d;
+}
