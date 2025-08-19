@@ -3,7 +3,6 @@ import react from '@vitejs/plugin-react-swc'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/Tasks-Manager-React/', // 👈 Ajustá esto al nombre real de tu repo
   plugins: [react()],
    server: {
     hhost: '0.0.0.0',   // Permite que el navegador de Windows acceda al servidor en WSL
