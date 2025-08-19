@@ -19,15 +19,6 @@ body {
   background-blend-mode: overlay; /* este es el modo de mezcla del fondo de la imagen con el color de fondo de la imagen */
 }
 
-h1 {
-  font-family: var(--fuente-title);
-  font-size: 2.1rem;
-  margin: 12px;
-  overflow: hidden;         /* Oculta cualquier contenido que se salga del contenedor */
-  text-overflow: ellipsis;  /* Si el texto se desborda, muestra "..." al final */
-  user-select: none;
-}
-
 .contenedor-h1 {
   width: 100%; 
 }
