@@ -1,0 +1,31 @@
+.loading-tasks {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.tasks-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  height: 30px;
+  margin: 10px 0;
+  background-color: #817d148a;
+  border-radius: 8px;
+  animation: pulse 1.8s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}

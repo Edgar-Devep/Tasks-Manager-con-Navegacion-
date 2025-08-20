@@ -1,6 +1,12 @@
 import './TodoSearch.css'
+import { useContext } from 'react';
+import { TodoContext } from '../../App/TodoContex';
 
-function TodoSearch({ stateSearch, setStateSearch}) {
+function TodoSearch() {  
+  const {
+    stateSearch,
+    setStateSearch    
+  } = useContext(TodoContext);
 
   return (
     <div className='contenedor-input'>

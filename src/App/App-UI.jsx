@@ -3,30 +3,37 @@ import { TodoSearch } from '../Components/TodoSearch';
 import { Todolist } from '../Components/Todolist';
 import { TodoItem } from '../Components/TodoItem';
 import { CreateTodobutton } from '../Components/CreateTodobutton';
+import { TodoLoading } from '../Components/TodoLoading';
+import { TodoError } from '../Components/TodoError';
+import { EmptyTasks } from '../Components/EmptyTasks';
+import { useContext } from 'react';
+import { TodoContext } from './TodoContex';
 
-function AppUi ({
-loading, // indica si los datos están cargando
-error,
-completedTodos,
-totalTodo,
-stateSearch,
-setStateSearch,
-searchTodo,
-completeTodo,
-deleteTodo
-}) {
+function AppUi () {
+  const {
+    loading,
+    error,
+    searchTodo,
+    completeTodo,
+    deleteTodo
+  } = useContext(TodoContext);
   return (
     <div className='Contenedor-componentes'>      
-      <TodoCounter completed={completedTodos} total={totalTodo}/>
-      <TodoSearch 
-      stateSearch = {stateSearch}
-      setStateSearch = {setStateSearch}
-      />
+      <TodoCounter />
+      <TodoSearch />
 
       <Todolist>
-        {loading && <p style={{color: 'green', fontWeight: 'bold', marginTop: '10px'}}>Estamos Cargando...</p>} {/* Si loading es true, mostramos un mensaje de carga */}
-        {error && <p style={{color: 'red', fontWeight: 'bold', marginTop: '10px'}}>Desesperate hubo un error!!</p>} {/* Si error es true, mostramos un mensaje de error */}
-        {(!loading && searchTodo.length === 0) && !error && <p>Crea tu primera Tarea</p>} {/* Si no hay tareas y no hay error, mostramos un mensaje para crear una tarea */}
+        {loading && (
+          <>
+            <TodoLoading /> 
+            <TodoLoading />
+            <TodoLoading />
+            <TodoLoading />
+            <TodoLoading />
+        </>
+        )} {/* Si loading es true, mostramos un mensaje de carga */}
+        {error && <TodoError />} {/* Si error es true, mostramos un mensaje de error */}
+        {(!loading && searchTodo.length === 0) && !error && <EmptyTasks />} {/* Si no hay tareas y no hay error, mostramos un mensaje para crear una tarea */}
         {searchTodo.map(todo => (
           <TodoItem 
           key={todo.text} 

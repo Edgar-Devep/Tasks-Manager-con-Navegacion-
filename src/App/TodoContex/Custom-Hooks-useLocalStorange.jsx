@@ -26,7 +26,9 @@ function useLocalStorageItem(itemName, inicialValue) { // Se crea un hook person
         setError(true)
       }
     }, 3000);  
-  })
+    console.log('useLocalStorageItem se ejecutó');
+    
+  }, [])  // esto significa que el efecto se ejecutará una vez cuando el componente se monte y cada vez que cambie el valor de inicialValue o itemName
 
   const saveItem = (newItem) => { // función para guardar loos nuevos todos en el localStorage y actualizar el estado
     // usamos JSON.stringify para convertir el array de objetos a un string antes de guardarlo en localStorage
@@ -45,3 +47,12 @@ function useLocalStorageItem(itemName, inicialValue) { // Se crea un hook person
 }
 
 export { useLocalStorageItem }
+
+// const todoDefault = [
+//   { text: 'Cortar Cebolla', completed: true },
+//   { text: 'Terminar Curso', completed: false },
+//   { text: 'Ver Peliculas', completed: true },
+//   { text: 'Cambiar Aceite', completed: false },
+// ];
+
+//  localStorage.saveItem('TAREAS_V1', JSON.stringify(todoDefault));
