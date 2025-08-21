@@ -8,6 +8,8 @@ import { TodoError } from '../Components/TodoError';
 import { EmptyTasks } from '../Components/EmptyTasks';
 import { useContext } from 'react';
 import { TodoContext } from './TodoContex';
+import { Modal } from './Modal/indel';
+import { TareaFrom } from './TareaFrom';
 
 function AppUi () {
   const {
@@ -15,7 +17,8 @@ function AppUi () {
     error,
     searchTodo,
     completeTodo,
-    deleteTodo
+    deleteTodo,
+    openModal
   } = useContext(TodoContext);
   return (
     <div className='Contenedor-componentes'>      
@@ -36,16 +39,22 @@ function AppUi () {
         {(!loading && searchTodo.length === 0) && !error && <EmptyTasks />} {/* Si no hay tareas y no hay error, mostramos un mensaje para crear una tarea */}
         {searchTodo.map(todo => (
           <TodoItem 
-          key={todo.text} 
+          key={todo.id} 
           text={todo.text}
           completed={todo.completed}
-          onComplete={() => completeTodo(todo.text)}
-          onDelete={() => deleteTodo(todo.text)}
+          onComplete={() => completeTodo(todo.id)}
+          onDelete={() => deleteTodo(todo.id)}
           />
         ))}
       </Todolist>
 
-      <CreateTodobutton />      
+      <CreateTodobutton /> 
+
+      {openModal && (
+        <Modal> 
+          <TareaFrom />        
+        </Modal>
+      )}          
     </div>
   );
 }

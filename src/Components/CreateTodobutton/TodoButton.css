@@ -14,9 +14,10 @@
   cursor: pointer;
   box-shadow: 2px 1px 10px 8px #dfe0a5;
   color: #dfe0a5;
-  position: absolute;
   bottom: 38px;
   right: 72px;
+  position: fixed;
+  z-index: 99;
 }
 
 .contenedor-button:hover {

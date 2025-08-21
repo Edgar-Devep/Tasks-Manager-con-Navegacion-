@@ -1,13 +1,13 @@
 import '../App.css'
 import { AppUi } from './App-UI';
-import { TodoProider } from './TodoContex';
+import { TodoProvider } from './TodoContex';
 
 
 function App() {  
   return (
-    <TodoProider>
+    <TodoProvider>
       <AppUi />
-    </TodoProider>
+    </TodoProvider>
   )  
 }
 

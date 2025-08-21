@@ -25,7 +25,7 @@ function useLocalStorageItem(itemName, inicialValue) { // Se crea un hook person
         setloading(false);
         setError(true)
       }
-    }, 3000);  
+    }, 1000);  
     console.log('useLocalStorageItem se ejecutó');
     
   }, [])  // esto significa que el efecto se ejecutará una vez cuando el componente se monte y cada vez que cambie el valor de inicialValue o itemName
