@@ -1,12 +1,40 @@
-# React + Vite
+# 🖋️ React Tasks Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Task Manager con interfaz pulida y experiencia visual cuidada. Skeleton loaders, íconos personalizados, animaciones suaves y feedback estilizado hacen que cada interacción sea clara y atractiva. Validaciones inteligentes y modales accesibles completan una app pensada para usabilidad y estética.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Demo en vivo
 
-## Expanding the ESLint configuration
+[![Captura de pantalla de la app](https://github.com/user-attachments/assets/75d6d5be-2203-4367-a1de-bfa27efb2853)](https://edgar-devep.github.io/React-Tasks-Manager/)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+<div align="center">
+
+## 🧠 Características principales
+
+ ✅ Agregar, eliminar y completar tareas
+ 
+🧹 Validación de inputs para evitar tareas vacías o duplicadas
+
+🧩 Uso de `useLocalStorage` para persistencia de datos
+
+🎨 Estilo visual refinado con animaciones, íconos y skeleton loaders
+
+📦 Despliegue automatizado con Vite y GitHub Pages
+
+---
+
+## 🛠️ Tecnologías utilizadas
+
+| Tecnología        | Uso principal                             |
+|------------------|--------------------------------------------|
+| React 19         | UI y lógica de componentes                 |
+| Vite             | Build rápido y configuración flexible      |
+| CSS              | Estilos personalizados y efectos visuales  |
+| FontAwesome      | Íconos para acciones y feedback            |
+| React Icons      | Iconografía adicional                      |
+| LocalStorage     | Persistencia de tareas                     |
+| GitHub Pages     | Hosting estático para producción           |
+
+---
+</div>
