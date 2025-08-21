@@ -10,7 +10,7 @@
 }
 
 body {
-  background-image: url(/React-Tasks-Manager/fondo.png);
+  background-image: url('/React-Tasks-Manager/imagenes/fondo.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
