@@ -10,7 +10,7 @@
 }
 
 body {
-  background-image: url(./public/imagenes/Captura\ de\ pantalla\ 2025-08-09\ 000817.png);
+  background-image: url(/React-Tasks-Manager/fondo.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
