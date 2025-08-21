@@ -15,7 +15,7 @@ function TodoSearch() {
       type='search'
       value={stateSearch}
       className= 'text-input'
-      placeholder= 'Escribe Nuevas Tareas...'
+      placeholder= 'Escribe alguna palabra clave para buscar tu tarea...'
       onChange={(event) => setStateSearch(event.target.value)}
       />
       {stateSearch && ( // aqui se esta validando si stateSearch tiene algun valor, si es asi se muestra el boton de limpiar sino queda en null
