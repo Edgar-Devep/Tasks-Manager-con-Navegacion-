@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center; 
   width: 80%;
-  height: 30px;
+  height: auto;
   margin: 20px;
   list-style: none;
   border: 2px solid #dfe0a5;
@@ -23,9 +23,8 @@
   flex-grow: 1; /* - se expande para ocupar todo el espacio que queda libre entre los otros elementos*/
   font-family: var(--fuente-content);
   font-weight: 500;
-  overflow: hidden;         /* Oculta cualquier contenido que se salga del contenedor */
-  text-overflow: ellipsis;  /* Si el texto se desborda, muestra "..." al final */
-  white-space: nowrap;      /* Evita que el texto se divida en varias líneas */
+  word-break: break-word;
+  white-space: normal;
   user-select: none; /*  impide que el usuario seleccione texto o elementos con el cursor */
 }
 

@@ -11,7 +11,7 @@ function TodoSearch() {
   return (
     <div className='contenedor-input'>
       <input 
-      title='Nueva Tarea'
+      title= 'Buscar Tarea'
       type='search'
       value={stateSearch}
       className= 'text-input'
