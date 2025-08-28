@@ -1,9 +1,7 @@
-import { createContext, useState } from "react";
+import {  useState } from "react";
 import { useLocalStorageItem } from "./Custom-Hooks-useLocalStorange";
 
-const TodoContext = createContext();
-
-function TodoProvider ({ children }) {
+function useTareas () {
   const {
     item: todos,
     saveItem,
@@ -56,7 +54,7 @@ function TodoProvider ({ children }) {
   };
   return (
 
-    <TodoContext.Provider value={{
+    {
       loading,
       error,
       completedTodos,
@@ -69,11 +67,8 @@ function TodoProvider ({ children }) {
       openModal,
       setOpenModal,
       addTodo
-    }}>
-      { children }
-    </TodoContext.Provider>
-
+    }
   )
 }
 
-export { TodoContext, TodoProvider };
+export {  useTareas };

@@ -1,12 +1,7 @@
-import { useContext, useState } from 'react';
-import { TodoContext } from '../TodoContex';
+import { useState } from 'react';
 import './TareaFrom.css'
 
-function TareaFrom() {
-  const {
-    addTodo,
-    setOpenModal
-  } = useContext(TodoContext);
+function TareaFrom({addTodo, setOpenModal}) {
   const [newTasksValue, setnewTasksValue] = useState('');
 
   const onSubmit = (event) => {
