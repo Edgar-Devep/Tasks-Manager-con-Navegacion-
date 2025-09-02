@@ -28,7 +28,27 @@ function useLocalStorageItem(itemName, inicialValue) { // Se crea un hook person
     }, 1000);  
     console.log('useLocalStorageItem se ejecutó');
     
-  }, [])  // esto significa que el efecto se ejecutará una vez cuando el componente se monte y cada vez que cambie el valor de inicialValue o itemName
+  }, [])  // esto significa que el efecto se ejecutará una vez cuando el componente se monte y cada vez que cambie el valor de inicialValue, itemName o sicroniza
+
+  useEffect(() => { // efecto para sincronizar el estado con cambios en el localStorage desde otras pestañas del navegador
+  const onStorageChange = (event) => { // función que se ejecuta cuando se detecta un cambio en el localStorage
+    if (event.key === itemName) { // verificamos que el cambio sea en el item que nos interesa esto se logra comparando la clave del item que cambió con el nombre del item que estamos manejando en este hook osea event.key es la clave del item que cambió en el localStorage y itemName es la clave del item que estamos manejando en este hook
+      try {
+        const newItem = JSON.parse(event.newValue); // parseamos el nuevo valor del item que cambió porque event.value viene como string y necesitamos convertirlo a un array de objetos
+        setItem(newItem); // actualizamos el estado con el nuevo valor parseado
+      } catch {
+        setError(true);// si hay un error al parsear el nuevo valor, seteamos el estado de error a true
+      }
+    }
+  };
+  
+  window.addEventListener('storage', onStorageChange); // agregamos un listener para detectar cambios en el localStorage con el evento 'storage' y pasamos la función onStorageChange como callback
+
+  return () => {
+    window.removeEventListener('storage', onStorageChange); // limpiamos el listener cuando el componente se desmonte (deja de existir en el DOM) para evitar fugas de memoria quiere decir limpiamos todo para que no quede escuchando cambios en el localStorage cuando el componente ya no está en el DOM
+  };
+}, [itemName]); // el efecto se ejecuta una vez cuando el componente se monta y cada vez que cambia el valor de itemName
+
 
   const saveItem = (newItem) => { // función para guardar loos nuevos todos en el localStorage y actualizar el estado
     // usamos JSON.stringify para convertir el array de objetos a un string antes de guardarlo en localStorage

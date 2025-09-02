@@ -7,10 +7,11 @@ import { CreateTodobutton } from '../Components/CreateTodobutton';
 import { TodoLoading } from '../Components/TodoLoading';
 import { TodoError } from '../Components/TodoError';
 import { EmptyTasks } from '../Components/EmptyTasks';
-import { Modal } from './Modal/indel';
+import { Modal } from './Modal/index';
 import { TareaFrom } from './TareaFrom';
 import { TodoHeader } from '../Components/TodoHeader';
 import { useTareas } from './useTarea';
+import { EmptyTasksResults } from '../Components/EmptyTasksResults';
 
 
 function App() {  
@@ -30,12 +31,54 @@ function App() {
   } = useTareas();
   return (
     <div className='Contenedor-componentes'> 
-      <TodoHeader>
-        <TodoCounter completedTodos={completedTodos} totalTodo={totalTodo}/>
-        <TodoSearch  stateSearch={stateSearch} setStateSearch={setStateSearch}/>      
+      <TodoHeader loading={loading}>
+        <TodoCounter 
+        completedTodos={completedTodos} 
+        totalTodo={totalTodo}/>
+
+        <TodoSearch  
+        stateSearch={stateSearch} 
+        setStateSearch={setStateSearch}/> 
+             
       </TodoHeader>     
 
-      <Todolist>
+      <Todolist 
+      error={error}
+      loading={loading}
+      searchTodo={searchTodo}
+      totalTodo={totalTodo}
+      resultsText={stateSearch}
+      onError={() => <TodoError />}
+      onLoading={() =>
+        <>
+        {[...Array(6)].map((_,i) => <TodoLoading key={i}/>)} {/*aqui estamos creando 6 elementos de carga utilizando el metodo array y map primero creamos un array con 6 elementos vacios y luego los mapeamos para crear 6 componentes de carga se les asigna una key unica con el indice del map*/}
+       
+        </>}
+      onEmpty={() => <EmptyTasks />}
+      onEmptyResults={(resultsText) => <EmptyTasksResults resultsText={resultsText}/>}
+      render={todo => (
+          <TodoItem 
+          key={todo.id} 
+          text={todo.text}
+          completed={todo.completed}
+          onComplete={() => completeTodo(todo.id)}
+          onDelete={() => deleteTodo(todo.id)}
+          />
+        )}      
+      >
+        {/* {todo => (
+          <TodoItem 
+          key={todo.id} 
+          text={todo.text}
+          completed={todo.completed}
+          onComplete={() => completeTodo(todo.id)}
+          onDelete={() => deleteTodo(todo.id)}
+          />
+        )} */}
+
+      </Todolist>
+
+      {/* <Todolist>
         {loading && (
           <>
             <TodoLoading /> 
@@ -45,9 +88,9 @@ function App() {
             <TodoLoading />
         </>
         )} {/* Si loading es true, mostramos un mensaje de carga */}
-        {error && <TodoError />} {/* Si error es true, mostramos un mensaje de error */}
-        {(!loading && searchTodo.length === 0) && !error && <EmptyTasks />} {/* Si no hay tareas y no hay error, mostramos un mensaje para crear una tarea */}
-        {searchTodo.map(todo => (
+        {/* {error && <TodoError />} Si error es true, mostramos un mensaje de error */}
+        {/* {(!loading && searchTodo.length === 0) && !error && <EmptyTasks />} Si no hay tareas y no hay error, mostramos un mensaje para crear una tarea */}
+        {/* {searchTodo.map(todo => (
           <TodoItem 
           key={todo.id} 
           text={todo.text}
@@ -56,7 +99,7 @@ function App() {
           onDelete={() => deleteTodo(todo.id)}
           />
         ))}
-      </Todolist>
+      </Todolist> */}
 
       <CreateTodobutton openModal={openModal} setOpenModal={setOpenModal} /> 
 

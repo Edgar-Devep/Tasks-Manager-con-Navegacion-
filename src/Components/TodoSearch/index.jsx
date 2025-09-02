@@ -1,10 +1,11 @@
 import './TodoSearch.css'
 
-function TodoSearch({ stateSearch, setStateSearch}) {  
+function TodoSearch({ stateSearch, setStateSearch, loading}) {  
 
   return (
     <div className='contenedor-input'>
       <input 
+      disabled={loading}
       title= 'Buscar Tarea'
       type='search'
       value={stateSearch}
