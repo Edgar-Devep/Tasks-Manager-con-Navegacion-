@@ -1,10 +1,66 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 
 function useLocalStorageItem(itemName, inicialValue) { // Se crea un hook personalizado para manejar el localStorage
   // este hook recibe dos parámetros, el nombre del item en el localStorage y el valor inicial que se le quiere asignar si no existe el item en el localStorage
-  const [item, setItem] = useState(inicialValue) // inicializamos el estado de los todos con los todos parseados desde localStorage
-  const [loading, setloading] = useState(true);
-  const [error, setError] = useState(false);
+
+  // Adaptando useReducer
+
+    const actionTypes =  {
+    error: 'ERROR',
+    success: 'SUCCESS',
+    save: 'SAVE'
+  }
+
+   const reducer = (state, action) => {
+    switch(action.type) {
+      case actionTypes.error :
+        return {
+          ...state,
+          loading: false,
+          error: true,
+        }
+      case actionTypes.success :
+        return {
+          ...state,
+          loading: false,
+        }
+
+      case actionTypes.save :
+        return {
+          ...state,
+          item: action.paylod
+        }
+    }
+  }
+
+  const ValueInicial = {
+    item: inicialValue,
+    loading: true,
+    error: false,
+  }
+
+  const [state, dispache] = useReducer(reducer, ValueInicial);
+  const {
+    item,
+    loading,
+    error,
+  } = state  
+  
+  const onError = () => {
+    dispache({ type: actionTypes.error })
+  } 
+
+  const onSuccess = (parsedItem) => {
+    dispache({ type: actionTypes.success, paylod: parsedItem})
+  }
+
+  const onSave = (newItem) => {
+    dispache({ type: actionTypes.save, paylod: newItem })
+  }
+
+  //const [item, setItem] = useState(inicialValue) // inicializamos el estado de los todos con los todos parseados desde localStorage
+  //const [loading, setloading] = useState(true);
+  //const [error, setError] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
@@ -17,13 +73,11 @@ function useLocalStorageItem(itemName, inicialValue) { // Se crea un hook person
           localStorage.setItem(itemName, JSON.stringify(inicialValue)); // usamos JSON.stringify para convertir el array vacío a un string y guardarlo en localStorage
           parsedItem = inicialValue;
           } else {
-          parsedItem = JSON.parse(localStorageItem); // si ya hay algo en localStorage con la clave 'TAREAS_V1' lo parseamos a un array de objetos
-          setItem(parsedItem);
+          parsedItem = JSON.parse(localStorageItem); // si ya hay algo en localStorage con la clave 'TAREAS_V1' lo parseamos a un array de objetos          
         }
-        setloading(false);
+        onSuccess(parsedItem)
       } catch {
-        setloading(false);
-        setError(true)
+        onError()
       }
     }, 1000);  
     console.log('useLocalStorageItem se ejecutó');
@@ -35,9 +89,9 @@ function useLocalStorageItem(itemName, inicialValue) { // Se crea un hook person
     if (event.key === itemName) { // verificamos que el cambio sea en el item que nos interesa esto se logra comparando la clave del item que cambió con el nombre del item que estamos manejando en este hook osea event.key es la clave del item que cambió en el localStorage y itemName es la clave del item que estamos manejando en este hook
       try {
         const newItem = JSON.parse(event.newValue); // parseamos el nuevo valor del item que cambió porque event.value viene como string y necesitamos convertirlo a un array de objetos
-        setItem(newItem); // actualizamos el estado con el nuevo valor parseado
+        onSave(newItem); // actualizamos el estado con el nuevo valor parseado
       } catch {
-        setError(true);// si hay un error al parsear el nuevo valor, seteamos el estado de error a true
+        onError();// si hay un error al parsear el nuevo valor, seteamos el estado de error a true
       }
     }
   };
@@ -55,7 +109,7 @@ function useLocalStorageItem(itemName, inicialValue) { // Se crea un hook person
     // esto es necesario porque localStorage solo puede guardar strings
     // y usamos setTodos para actualizar el estado de los todos en la aplicación
     localStorage.setItem(itemName, JSON.stringify(newItem));
-    setItem(newItem);
+    onSave(newItem);
   }
 
   return {
