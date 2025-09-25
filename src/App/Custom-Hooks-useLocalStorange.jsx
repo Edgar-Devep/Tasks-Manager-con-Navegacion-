@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from 'react';
+import { useEffect, useReducer } from 'react';
 
 function useLocalStorageItem(itemName, inicialValue) { // Se crea un hook personalizado para manejar el localStorage
   // este hook recibe dos parámetros, el nombre del item en el localStorage y el valor inicial que se le quiere asignar si no existe el item en el localStorage
@@ -23,12 +23,13 @@ function useLocalStorageItem(itemName, inicialValue) { // Se crea un hook person
         return {
           ...state,
           loading: false,
+          item: action.payload
         }
 
       case actionTypes.save :
         return {
           ...state,
-          item: action.paylod
+          item: action.payload
         }
     }
   }
@@ -51,11 +52,11 @@ function useLocalStorageItem(itemName, inicialValue) { // Se crea un hook person
   } 
 
   const onSuccess = (parsedItem) => {
-    dispache({ type: actionTypes.success, paylod: parsedItem})
+    dispache({ type: actionTypes.success, payload: parsedItem})
   }
 
   const onSave = (newItem) => {
-    dispache({ type: actionTypes.save, paylod: newItem })
+    dispache({ type: actionTypes.save, payload: newItem })
   }
 
   //const [item, setItem] = useState(inicialValue) // inicializamos el estado de los todos con los todos parseados desde localStorage
@@ -96,7 +97,7 @@ function useLocalStorageItem(itemName, inicialValue) { // Se crea un hook person
     }
   };
   
-  window.addEventListener('storage', onStorageChange); // agregamos un listener para detectar cambios en el localStorage con el evento 'storage' y pasamos la función onStorageChange como callback
+  window.addEventListener('storage', onStorageChange); // - Escucha cambios en el localStorage hechos desde otras pestañas o ventanas del navegador y pasamos la función onStorageChange como callback
 
   return () => {
     window.removeEventListener('storage', onStorageChange); // limpiamos el listener cuando el componente se desmonte (deja de existir en el DOM) para evitar fugas de memoria quiere decir limpiamos todo para que no quede escuchando cambios en el localStorage cuando el componente ya no está en el DOM

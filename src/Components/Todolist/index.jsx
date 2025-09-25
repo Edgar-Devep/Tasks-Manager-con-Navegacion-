@@ -4,7 +4,7 @@ function Todolist(props) {
   
   const renderFunction = props.render || props.children
   return (
-    <section>
+    <section className='section-ul'>
       { props.error && props.onError() } {/*si hay un error mostramos el componente de error*/}
       { props.loading && props.onLoading() } {/*si estamos cargando mostramos el componente de carga*/}
 

@@ -8,6 +8,7 @@ input[type="search"]::-webkit-search-cancel-button { /* Oculta el botón de canc
   flex-direction: column;
   align-items: center;
   min-width: 100%;
+  margin-bottom: 20px;
 }
 
 .contenedor-input {  
