@@ -1,0 +1,58 @@
+.contenedor-li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  width: 80%;
+  height: auto;
+  margin: 8px;
+  list-style: none;
+  border: 2px solid #dfe0a5;
+  border-radius: 8px;
+  padding: 0 8px;  
+  background-color: #090a098d;
+  color: #fff;
+ /* flex: 1 1; practicarlo Ideal cuando querés que varios elementos dentro de un contenedor flex se repartan el espacio disponible de forma proporcional */
+}
+
+.contenedor-li--click {
+  background-color: #00790052;
+}
+
+.contenedor-p {
+  display: flex;
+  flex-grow: 1; /* - se expande para ocupar todo el espacio que queda libre entre los otros elementos*/
+  font-family: var(--fuente-content);
+  font-weight: 500;
+  word-break: break-word;
+  white-space: normal;
+  user-select: none; /*  impide que el usuario seleccione texto o elementos con el cursor */
+}
+
+.fa-x, .fa-check, .fa-pen-to-square {
+  cursor: pointer;
+}
+
+.text-check--active {
+  text-decoration: line-through;
+  color: #09ff00;
+}
+
+.icon.check--active {
+  color: #09ff00;
+}
+
+.fa-check:hover {
+  color: #09ff00;
+}
+
+.fa-x:hover{
+  color:  #ff0000;
+}
+
+.fa-pen-to-square:hover{
+  color: #1E90FF;
+}
+
+.fa-pen-to-square--active {
+  color: #1E90FF;
+}
