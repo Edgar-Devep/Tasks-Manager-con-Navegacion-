@@ -1,4 +1,5 @@
 import '../../App.css'
+import { useNavigate } from 'react-router-dom';
 import { TodoCounter } from '../../UI/TodoCounter';
 import { TodoSearch } from '../../UI/TodoSearch';
 import { Todolist } from '../../UI/Todolist';
@@ -7,28 +8,31 @@ import { CreateTodobutton } from '../../UI/CreateTodobutton';
 import { TodoLoading } from '../../UI/TodoLoading';
 import { TodoError } from '../../UI/TodoError';
 import { EmptyTasks } from '../../UI/EmptyTasks';
-import { Modal } from '../../App/Modal/index';
-import { TareaFrom } from '../../UI/TareaFrom';
+import { EmptyTasksResults } from '@UI/EmptyTasksResults';
 import { TodoHeader } from '../../UI/TodoHeader';
 import { useTareas } from '../useTarea';
-import { EmptyTasksResults } from '@UI/EmptyTasksResults';
+//import { Modal } from '../../App/Modal/index';
+//import { TareaFrom } from '../../UI/TareaFrom';
 
 
 function HomePage() {  
+  const navigate = useNavigate()
+
   const {
     loading,
     error,
     searchTodo,
     completeTodo,
     deleteTodo,
-    openModal,
-    setOpenModal,
+    //openModal,
+    //setOpenModal,
+    //addTodo,
     completedTodos,
     totalTodo,
     stateSearch,
     setStateSearch,
-    addTodo,
   } = useTareas();
+
   return (
     <div className='Contenedor-componentes'> 
       <TodoHeader loading={loading}>
@@ -61,7 +65,7 @@ function HomePage() {
           key={todo.id} 
           text={todo.text}
           completed={todo.completed}
-          onEdit={() => console.log('tratas de editar')}
+          onEdit={() =>  navigate(`/edit/${todo.id}`)}
           onComplete={() => completeTodo(todo.id)}
           onDelete={() => deleteTodo(todo.id)}
           />
@@ -102,13 +106,15 @@ function HomePage() {
         ))}
       </Todolist> */}
 
-      <CreateTodobutton openModal={openModal} setOpenModal={setOpenModal} /> 
+      <CreateTodobutton 
+      onClick={() => navigate('/new')}
+      /> 
 
-      {openModal && (
+      {/* {openModal && (
         <Modal> 
           <TareaFrom addTodo={addTodo} setOpenModal={setOpenModal}/>        
         </Modal>
-      )}          
+      )}           */}
     </div>
   );
 }

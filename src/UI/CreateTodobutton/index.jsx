@@ -1,13 +1,13 @@
 import './TodoButton.css'
 
-function CreateTodobutton({openModal, setOpenModal}) {
+function CreateTodobutton({ onClick }) {
   return (
     <div className='general-button'>
       <button 
 
       title='Agregar Tarea'
       className="contenedor-button"
-      onClick={() => setOpenModal(!openModal)}
+      onClick={ onClick }
       >
         <i className="fa-solid fa-plus"></i>
       </button>

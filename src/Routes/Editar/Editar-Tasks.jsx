@@ -1,6 +1,14 @@
+import { TareaFrom } from "../../UI/TareaFrom"
+import { useTareas } from "../useTarea"
+
 function EditarPage () {
+  const { editTodo  } = useTareas()
   return (
-    <h1>Editar Page</h1>
+    <TareaFrom 
+    label={'Editar Tarea'}
+    enviar={'Editar'}
+    editTodo={editTodo}
+    />
   )
 }
 

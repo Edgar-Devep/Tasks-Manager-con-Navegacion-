@@ -2,7 +2,7 @@ import './Todoitem.css'
 
 function TodoItem({ text, completed, onComplete, onDelete, onEdit }) {
   return (
-  <li className={`contenedor-li ${completed ? 'contenedor-li--click' : ''}`}>
+  <li className={`contenedor-li ${completed && 'contenedor-li--click'}`}>
     <span 
     title='Check'
     className={`${completed && 'icon.check--active'}`}

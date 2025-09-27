@@ -1,3 +1,21 @@
+console.log('hola');
+// podemos correr en la terminal colocando node y se arrastra el archivo.js
+
+//el método estático Date.now(), el cuál devuelve la cantidad de milisegundos transcurridos desde el primero de enero de 1970.
+
+//toString(16); genera un numero hexadecimal
+
+function newTodoId() {
+  return Date.now().toString(16);
+}
+
+console.log(newTodoId());
+ 
+
+
+//Devuelve el numero de milisegundos, ejemplo: 1668393426376
+
+
 /*
 En resumen:
 

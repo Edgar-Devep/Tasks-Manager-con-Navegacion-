@@ -1,10 +1,15 @@
+.contenedor-general {
+  display: flex;
+  justify-content: center;
+}
+
 .contenedor-formulario {
-  width: 50%;
-  height: 50%;
+  width: 80%;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   text-align: center;
   background-color: #00000059;
   border-radius: 20px;
@@ -12,7 +17,7 @@
 
 .title-nueva-tarea {
   font-family: var(--fuente-title);
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 500;
   color: #fff;
 }
@@ -37,15 +42,15 @@
 
 .contenedor-button-modal {
   display: flex;
-  justify-content: center; 
+  justify-content: space-around;
   align-content: center;
   flex-wrap: wrap;
-  width: 100%
+  width: 100%;
 }
 
 .personal-button {
   border-radius: 8px;
-  width: 90px;
+  width: 140px;
   height: 40px;
   color: #fff;
   border: none;

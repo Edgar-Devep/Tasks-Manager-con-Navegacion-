@@ -53,21 +53,30 @@ function useTareas () {
     newItem.splice(todoIndex, 1); // eliminamos el todo encontrado en el índice especificado
     saveItem(newItem);
   };
+
+
+  const editTodo = (id) => {
+    const ediatrTarea = todos.find(todo => todo.id === id)
+    console.log(ediatrTarea);   
+  }
+  editTodo()
+
   return (
 
     {
+      addTodo,
+      completeTodo,
+      deleteTodo,
+      setStateSearch,
+      editTodo,
       loading,
       error,
       completedTodos,
       totalTodo,
       stateSearch,
-      setStateSearch,
       searchTodo,
-      completeTodo,
-      deleteTodo,
       openModal,
       setOpenModal,
-      addTodo
     }
   )
 }
