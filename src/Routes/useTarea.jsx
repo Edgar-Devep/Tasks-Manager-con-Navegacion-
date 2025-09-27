@@ -54,13 +54,6 @@ function useTareas () {
     saveItem(newItem);
   };
 
-
-  const editTodo = (id) => {
-    const ediatrTarea = todos.find(todo => todo.id === id)
-    console.log(ediatrTarea);   
-  }
-  editTodo()
-
   return (
 
     {
@@ -68,7 +61,6 @@ function useTareas () {
       completeTodo,
       deleteTodo,
       setStateSearch,
-      editTodo,
       loading,
       error,
       completedTodos,

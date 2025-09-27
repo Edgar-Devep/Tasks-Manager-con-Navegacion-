@@ -6,7 +6,6 @@ function TareaFrom({ addTodo, label, enviar }) {
   const navigate = useNavigate();
   const [newTasksValue, setnewTasksValue] = useState('');
 
-
   const onSubmit = (event) => {
     event.preventDefault();
     addTodo(newTasksValue) // llamamos a la función addTodo del contexto para añadir la nueva tarea
@@ -15,7 +14,6 @@ function TareaFrom({ addTodo, label, enviar }) {
 
   const onChange = (event) => {
     setnewTasksValue(event.target.value);
-    
   };
 
   return (
