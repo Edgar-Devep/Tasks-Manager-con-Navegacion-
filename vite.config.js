@@ -12,7 +12,7 @@ const __dirname = path.dirname(__filename);// 📂 Extrae el directorio base (__
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/React-Tasks-Manager/', // 👈 esto es clave
+  base: '/Tasks-Manager-con-Navegacion-/', // 👈 esto es clave
   plugins: [react()],
   
    resolve: {// 🧭 Define alias personalizados para importar módulos con rutas semánticas en lugar de relativas
