@@ -9,7 +9,7 @@ function useTareas () {
     error  
   } = useLocalStorageItem('TAREAS_V1', []); // usamos useState para declarar el estado de los todos, inicializándolo con los todos parseados desde localStorage
   const [stateSearch, setStateSearch] = useState(''); // podemos declarar estados en el padre para que los hijos puedan acceder a ellos
-  const [openModal, setOpenModal] = useState(false); // estado para controlar si el modal está abierto o cerrado
+  //const [openModal, setOpenModal] = useState(false); // estado para controlar si el modal está abierto o cerrado
 
   const completedTodos = todos.filter(todo => !! todo.completed).length // !! convierte el valor a booleano en caso de que sea un string o un number
   const totalTodo = todos.length // estos son estados derivados, no son estados que se declaran con useState, sino que se derivan de otros estados por ejemplo, no se crea un useState nuevo se utiliza el que ya existe
@@ -34,6 +34,14 @@ function useTareas () {
     });
     saveItem(newItem); // se llama a la función saveItem para guardar los nuevos todos en el localStorage y actualizar el estado
   }
+
+
+  const getTodo = (id) => {
+    const todoIndex = todos.findIndex(
+      (todo) => todo.id === id
+    );    
+    return todos[todoIndex]
+  }
   
   const completeTodo = (id) => { // se le pasa el texto del todo que se quiere completar o descompletar
     const newItem = [...todos]; // se crea una copia del estado actual de los todos
@@ -43,6 +51,15 @@ function useTareas () {
     );
     newItem[todoIndex].completed = !newItem[todoIndex].completed; // se cambia el estado de completado del todo encontrado si es true se cambia a false y viceversa
     saveItem(newItem); // se llama a la función saveItem para guardar los nuevos todos en el localStorage y actualizar el estado
+  };
+
+  const editTodo = (id, ediText) => { 
+    const newItem = [...todos];
+    const todoIndex = newItem.findIndex( 
+      (todo) => todo.id === id 
+    );
+    newItem[todoIndex].text = ediText
+    saveItem(newItem); 
   };
 
   const deleteTodo = (id) => { 
@@ -58,17 +75,19 @@ function useTareas () {
 
     {
       addTodo,
+      editTodo,
       completeTodo,
       deleteTodo,
       setStateSearch,
+      getTodo,
       loading,
       error,
       completedTodos,
       totalTodo,
       stateSearch,
       searchTodo,
-      openModal,
-      setOpenModal,
+      //openModal,
+      //setOpenModal,
     }
   )
 }

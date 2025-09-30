@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './TareaFrom.css'
 
-function TareaFrom({ addTodo, label, enviar }) {
+function TareaFrom({ submitAddTodo, label, enviar, defaultTodoText }) {
   const navigate = useNavigate();
-  const [newTasksValue, setnewTasksValue] = useState('');
+  const [newTasksValue, setnewTasksValue] = useState(defaultTodoText || '');
 
   const onSubmit = (event) => {
     event.preventDefault();
-    addTodo(newTasksValue) // llamamos a la función addTodo del contexto para añadir la nueva tarea
+    submitAddTodo(newTasksValue) // llamamos a la función addTodo del contexto para añadir la nueva tarea
      navigate(-1)
   };
 

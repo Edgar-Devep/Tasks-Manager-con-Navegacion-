@@ -7,7 +7,7 @@ function NewPage () {
     <TareaFrom 
     label={'Escribe tu Nueva Tarea'}
     enviar={'Añadir'}
-    addTodo={addTodo} />
+    submitAddTodo={(newText) => addTodo(newText)} />
   )
 }
 
