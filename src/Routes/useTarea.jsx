@@ -7,17 +7,15 @@ function useTareas () {
     saveItem,
     loading,
     error  
-  } = useLocalStorageItem('TAREAS_V1', []); // usamos useState para declarar el estado de los todos, inicializándolo con los todos parseados desde localStorage
-  const [stateSearch, setStateSearch] = useState(''); // podemos declarar estados en el padre para que los hijos puedan acceder a ellos
-  //const [openModal, setOpenModal] = useState(false); // estado para controlar si el modal está abierto o cerrado
+  } = useLocalStorageItem('TAREAS_V1', []); 
+  const [stateSearch, setStateSearch] = useState(''); 
 
-  const completedTodos = todos.filter(todo => !! todo.completed).length // !! convierte el valor a booleano en caso de que sea un string o un number
-  const totalTodo = todos.length // estos son estados derivados, no son estados que se declaran con useState, sino que se derivan de otros estados por ejemplo, no se crea un useState nuevo se utiliza el que ya existe
-
-  const searchTodo = todos.filter(todo => {  // filtramos los todos para que solo se muestren los que coincidan con el texto de búsqueda
-    const todoText = todo.text.toLowerCase() // convertimos el texto a minúsculas para que la búsqueda no sea sensible a mayúsculas y minúsculas
-    const searchText = stateSearch.toLowerCase()// convertimos el texto de búsqueda a minúsculas
-    return todoText.includes(searchText)// verificamos si el texto del todo esta incluido en el texto de búsqueda
+  const completedTodos = todos.filter(todo => !! todo.completed).length 
+  const totalTodo = todos.length 
+  const searchTodo = todos.filter(todo => { 
+    const todoText = todo.text.toLowerCase() 
+    const searchText = stateSearch.toLowerCase()
+    return todoText.includes(searchText)
 
   });
 
@@ -45,8 +43,7 @@ function useTareas () {
   
   const completeTodo = (id) => { // se le pasa el texto del todo que se quiere completar o descompletar
     const newItem = [...todos]; // se crea una copia del estado actual de los todos
-    const todoIndex = newItem.findIndex( //- newItem es una copia del array de todos. todoIndex es el índice del todo que coincide con el id buscado. - Entonces, newItem[todoIndex] accede directamente al objeto todo que queremos modificar
-
+    const todoIndex = newItem.findIndex(
       (todo) => todo.id === id // buscamos el índice del todo que coincide con el texto pasado
     );
     newItem[todoIndex].completed = !newItem[todoIndex].completed; // se cambia el estado de completado del todo encontrado si es true se cambia a false y viceversa
@@ -86,8 +83,6 @@ function useTareas () {
       totalTodo,
       stateSearch,
       searchTodo,
-      //openModal,
-      //setOpenModal,
     }
   )
 }

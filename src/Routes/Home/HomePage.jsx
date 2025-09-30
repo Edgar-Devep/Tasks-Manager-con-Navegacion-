@@ -11,8 +11,6 @@ import { EmptyTasks } from '../../UI/EmptyTasks';
 import { EmptyTasksResults } from '@UI/EmptyTasksResults';
 import { TodoHeader } from '../../UI/TodoHeader';
 import { useTareas } from '../useTarea';
-//import { Modal } from '../../App/Modal/index';
-//import { TareaFrom } from '../../UI/TareaFrom';
 
 
 function HomePage() {  
@@ -24,9 +22,6 @@ function HomePage() {
     searchTodo,
     completeTodo,
     deleteTodo,
-    //openModal,
-    //setOpenModal,
-    //addTodo,
     completedTodos,
     totalTodo,
     stateSearch,
@@ -69,52 +64,14 @@ function HomePage() {
           onComplete={() => completeTodo(todo.id)}
           onDelete={() => deleteTodo(todo.id)}
           />
-        )}      
-      >
-        {/* {todo => (
-          <TodoItem 
-          key={todo.id} 
-          text={todo.text}
-          completed={todo.completed}
-          onComplete={() => completeTodo(todo.id)}
-          onDelete={() => deleteTodo(todo.id)}
-          />
-        )} */}
+        )}
+        >
 
       </Todolist>
 
-      {/* <Todolist>
-        {loading && (
-          <>
-            <TodoLoading /> 
-            <TodoLoading />
-            <TodoLoading />
-            <TodoLoading />
-            <TodoLoading />
-        </>
-        )} {/* Si loading es true, mostramos un mensaje de carga */}
-        {/* {error && <TodoError />} Si error es true, mostramos un mensaje de error */}
-        {/* {(!loading && searchTodo.length === 0) && !error && <EmptyTasks />} Si no hay tareas y no hay error, mostramos un mensaje para crear una tarea */}
-        {/* {searchTodo.map(todo => (
-          <TodoItem 
-          key={todo.id} 
-          text={todo.text}
-          completed={todo.completed}
-          onComplete={() => completeTodo(todo.id)}
-          onDelete={() => deleteTodo(todo.id)}
-          />
-        ))}
-      </Todolist> */}
-
       <CreateTodobutton 
       onClick={() => navigate('/new')}
-      /> 
-
-      {/* {openModal && (
-        <Modal> 
-          <TareaFrom addTodo={addTodo} setOpenModal={setOpenModal}/>        
-        </Modal>
-      )}           */}
+      />
     </div>
   );
 }
