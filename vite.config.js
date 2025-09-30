@@ -23,7 +23,7 @@ export default defineConfig({
     },
   },
     server: {
-    hhost: '0.0.0.0',   // Permite que el navegador de Windows acceda al servidor en WSL
+    host: '0.0.0.0',   // Permite que el navegador de Windows acceda al servidor en WSL
     port: 5173,        // Puerto por defecto (podés cambiarlo si querés)
     open: true,         // Abre el navegador automáticamente al correr `npm run dev`
     watch: {
